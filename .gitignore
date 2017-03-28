@@ -1,0 +1,7 @@
+gradle
+gradlew
+gradlew.bat
+redmine_api.*
+.gradle
+
+out
