@@ -104,7 +104,15 @@ public class Filter {
      * Only issues having once of the specified values in the given custom field
      */
     public void isCustom(CustomField field, Object... values) {
-        filters.put("cf_" + field.getId(), objectList(values));
+        filters.put("op%5Bcf_" + field.getId() + "%5D", "%3D");
+        filters.put("v%5Bcf_" + field.getId()+"%5D", objectList(values));
+    }
+
+    /**
+     * Only issues having once of the specified values in the given custom field
+     */
+    public void isCustom(CustomField field, boolean bool) {
+        isCustom(field, bool ? "1" : "0");
     }
 
     /**

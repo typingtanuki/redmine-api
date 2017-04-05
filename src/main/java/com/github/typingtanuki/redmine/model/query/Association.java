@@ -10,8 +10,8 @@ public enum Association {
     ATTACHMENTS("attachments"),
     RELATIONS("relations"),
     WATCHERS("watchers"),
-    JOURNAL("journals"),
-    CHANGESET("changesets");
+    JOURNALS("journals"),
+    CHANGESETS("changesets");
 
     private String value;
 

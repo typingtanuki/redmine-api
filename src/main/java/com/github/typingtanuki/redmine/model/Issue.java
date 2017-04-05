@@ -24,6 +24,7 @@ public class Issue {
     private double spent_hours;
     private double total_spent_hours;
     private double estimated_hours;
+    private double total_estimated_hours;
 
     private List<CustomField> custom_fields;
 
@@ -32,6 +33,12 @@ public class Issue {
     private String closed_on;
 
     private String start_date;
+
+    private List<Issue> children;
+    private List<String> attachments;
+    private List<Relation> relations;
+    private List<Changeset> changesets;
+    private List<Journal> journals;
 
     public int getId() {
         return id;
@@ -199,6 +206,54 @@ public class Issue {
 
     public void setEstimated_hours(double estimated_hours) {
         this.estimated_hours = estimated_hours;
+    }
+
+    public double getTotal_estimated_hours() {
+        return total_estimated_hours;
+    }
+
+    public void setTotal_estimated_hours(double total_estimated_hours) {
+        this.total_estimated_hours = total_estimated_hours;
+    }
+
+    public List<Issue> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Issue> children) {
+        this.children = children;
+    }
+
+    public List<String> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<String> attachments) {
+        this.attachments = attachments;
+    }
+
+    public List<Changeset> getChangesets() {
+        return changesets;
+    }
+
+    public void setChangesets(List<Changeset> changesets) {
+        this.changesets = changesets;
+    }
+
+    public List<Journal> getJournals() {
+        return journals;
+    }
+
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
+    }
+
+    public List<Relation> getRelations() {
+        return relations;
+    }
+
+    public void setRelations(List<Relation> relations) {
+        this.relations = relations;
     }
 
     @Override

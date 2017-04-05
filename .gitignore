@@ -3,5 +3,8 @@ gradlew
 gradlew.bat
 redmine_api.*
 .gradle
+.idea
+build
 
 out
+bintray.gradle

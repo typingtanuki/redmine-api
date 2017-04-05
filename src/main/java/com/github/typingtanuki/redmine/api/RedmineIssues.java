@@ -23,34 +23,24 @@ public class RedmineIssues extends ApiCore {
     }
 
     /**
-     * @param limit        the number of entries to return, recommended 25, max 100
-     * @param offset       the offset
-     * @param filter       the filters to apply to the issue list
-     * @param associations the associations to fetch with the issues
+     * @param limit  the number of entries to return, recommended 25, max 100
+     * @param offset the offset
+     * @param filter the filters to apply to the issue list
      * @return all the issues matching the filter in redmine
      */
     public List<Issue> list(int limit,
                             int offset,
-                            Filter filter,
-                            Association... associations) throws IOException {
-        return rawList(limit, offset, filter, associations).getIssues();
+                            Filter filter) throws IOException {
+        return rawList(limit, offset, filter).getIssues();
     }
 
     private IssueList rawList(int limit,
                               int offset,
-                              Filter filter,
-                              Association... associations) throws IOException {
+                              Filter filter) throws IOException {
         StringBuilder url = redmineUrl("issues");
 
-        //Add all the associations to the query
-        boolean hasParam = false;
-        if (associations.length > 0) {
-            addParameter(url, hasParam, "include", handleAssociations(associations));
-            hasParam = true;
-        }
-
         //Add the query parameters for the limit and offset
-        addParameter(url, hasParam, "limit", limit);
+        addParameter(url, false, "limit", limit);
         addParameter(url, true, "offset", offset);
 
         for (Map.Entry<String, Object> parameter : filter.filters()) {
@@ -80,7 +70,7 @@ public class RedmineIssues extends ApiCore {
             if (out.length() != 0) {
                 out.append(",");
             }
-            out.append(association.toString());
+            out.append(association.getValue());
         }
         return out.toString();
     }
